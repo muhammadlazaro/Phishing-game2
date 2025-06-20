@@ -1,0 +1,70 @@
+<h2>Level 1: Deteksi Email Phishing</h2>
+<form method="post" action="/game/level1/submit">
+<?php foreach ($questions as $q): ?>
+  <p><strong><?= $q['question'] ?></strong></p>
+  <input type="radio" name="answer[<?= $q['id'] ?>]" value="1"> Phishing<br>
+  <input type="radio" name="answer[<?= $q['id'] ?>]" value="0"> Bukan Phishing<br><br>
+<?php endforeach; ?>
+  <button type="submit">Kirim Jawaban</button>
+</form>
+<a href="/game/level2">Lanjut ke Level 2</a>
+
+
+<h2>Level 1: Pilih mana yang termasuk phishing</h2>
+
+<?php if(session()->getFlashdata('error')): ?>
+    <p style="color:red"><?= session()->getFlashdata('error') ?></p>
+<?php endif; ?>
+
+<form action="<?= base_url('game/level1/submit') ?>" method="post">
+    <label>Email ini menyuruh Anda klik tautan aneh. Apa ini?</label><br>
+    <input type="text" name="jawaban" required>
+    <br><br>
+    <button type="submit">Kirim Jawaban</button>
+</form>
+
+<h2>Level 1: Pertanyaan dari Database</h2>
+
+<?php if(session()->getFlashdata('error')): ?>
+    <p style="color:red"><?= session()->getFlashdata('error') ?></p>
+<?php endif; ?>
+
+<p><?= esc($question['question']) ?></p>
+
+<form action="<?= base_url('game/level1/submit') ?>" method="post">
+    <input type="text" name="jawaban" required placeholder="Masukkan jawaban Anda">
+    <br><br>
+    <button type="submit">Kirim Jawaban</button>
+</form>
+
+
+
+
+<?php if(session()->getFlashdata('error')): ?>
+    <p style="color:red"><?= session()->getFlashdata('error') ?></p>
+<?php endif; ?>
+
+<p><?= esc($question['question']) ?></p>
+
+<?php foreach ($questions as $q): ?>
+  <p><strong><?= $q['question'] ?></strong></p>
+  <input type="radio" name="answer[<?= $q['id'] ?>]" value="1"> Phishing<br>
+  <input type="radio" name="answer[<?= $q['id'] ?>]" value="0"> Bukan Phishing<br><br>
+<?php endforeach; ?>
+  <button type="submit">Kirim Jawaban</button>
+</form>
+<a href="/game/level2">Lanjut ke Level 2</a>
+
+
+<h2>Level 1: Pertanyaan dari Database</h2>
+<p><?= esc($question['question']) ?></p>
+
+<?php if (session()->getFlashdata('error')): ?>
+    <p style="color:red;"><?= session()->getFlashdata('error') ?></p>
+<?php endif; ?>
+
+<form method="post" action="<?= base_url('/game/level1/submit') ?>">
+    <input type="hidden" name="question_id" value="<?= esc($question['id']) ?>">
+    <input type="text" name="jawaban" placeholder="Masukkan jawaban Anda" required>
+    <button type="submit">Kirim</button>
+</form>
