@@ -9,26 +9,27 @@ class Auth extends BaseController
         return view('auth/login');
     }
 
-public function loginPost()
-{
-    $model = new \App\Models\UserModel();
-    $username = $this->request->getPost('username');
-    $password = $this->request->getPost('password');
+    public function loginPost()
+    {
+        $model = new \App\Models\UserModel();
+        $username = $this->request->getPost('username');
+        $password = $this->request->getPost('password');
 
-    $user = $model->where('username', $username)->first();
+        $user = $model->where('username', $username)->first();
 
-    if ($user && password_verify($password, $user['password'])) {
-        session()->set([
-            'id' => $user['id'],
-            'username' => $user['username'],
-            'role' => $user['role'],
-            'isLoggedIn' => true
-        ]);
-        return redirect()->to($user['role'] === 'admin' ? '/admin' : '/game/level1');
+        // Bagian ini hanya akan dieksekusi jika dd() dihapus
+        if ($user && password_verify($password, $user['password'])) {
+            session()->set([
+                'id' => $user['id'],
+                'username' => $user['username'],
+                'role' => $user['role'],
+                'isLoggedIn' => true
+            ]);
+            return redirect()->to($user['role'] === 'admin' ? '/admin' : '/game/level1');
+        }
+
+        return redirect()->to('/login')->with('error', 'Username atau password salah');
     }
-
-    return redirect()->to('/login')->with('error', 'Username atau password salah');
-}
 
     public function register()
     {

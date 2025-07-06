@@ -1,14 +1,1 @@
-<h2>Level 2: Advanced Secure Software Development Lifecycle</h2>
-<form method="post" action="<?= site_url('game/level2/submit') ?>">
-    <?= csrf_field() ?>
-    <?php foreach ($questions as $index => $q): ?>
-        <div class="mb-4 p-3 border rounded">
-            <p><strong><?= $index + 1 ?>. <?= $q['question'] ?></strong></p>
-            <input type="radio" name="answers[<?= $q['id'] ?>]" value="A" required> A. <?= $q['option_a'] ?><br>
-            <input type="radio" name="answers[<?= $q['id'] ?>]" value="B"> B. <?= $q['option_b'] ?><br>
-            <input type="radio" name="answers[<?= $q['id'] ?>]" value="C"> C. <?= $q['option_c'] ?><br>
-            <input type="radio" name="answers[<?= $q['id'] ?>]" value="D"> D. <?= $q['option_d'] ?><br>
-        </div>
-    <?php endforeach; ?>
-    <button type="submit" class="btn btn-primary">Submit Jawaban</button>
-</form>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Level 2 - SSDL Quiz</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><style>/* similar styles as level1 with new color pulse */ @keyframes pulse{0%{box-shadow:0 0 10px #f0f;}50%{box-shadow:0 0 20px #f0f;}100%{box-shadow:0 0 10px #f0f;}} </style></head><body><div class="container"><h2>Level 2: Advanced Secure SDLC</h2><form method="post" action="<?= site_url('game/level2/submit') ?>"><?= csrf_field() ?><?php foreach($questions as $i=>$q): ?><div class="question-box" style="border-color:#f0f; animation:pulse 2s infinite; padding:20px; margin-bottom:20px; background:rgba(10,0,20,0.7);"><p><strong><?= $i+1 ?>. <?= esc($q['question']) ?></strong></p><?php foreach(['A','B','C','D'] as $opt): ?><div class="form-check"><input class="form-check-input" type="radio" name="answers[<?= $q['id'] ?>]" value="<?= $opt ?>" <?= $opt==='A'?'required':'' ?>> <?= $opt ?>. <?= esc($q['option_'.strtolower($opt)]) ?></div><?php endforeach; ?></div><?php endforeach; ?><button type="submit" class="btn btn-submit">Submit Level 2</button></form></div></body></html>

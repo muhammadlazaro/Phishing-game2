@@ -1,16 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Hasil Level 2</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Result Level 2</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    .result-box {
+      /* reuse styles */
+    }
+  </style>
 </head>
 <body>
-<div class="container mt-5">
-    <div class="alert alert-info">
-        <h4>Hasil Level 2:</h4>
-        <p>Skor Anda: <?= $score ?>/5</p>
-    </div>
-    <a href="<?= site_url('game/ending') ?>" class="btn btn-success">Lihat Hasil Akhir</a>
-</div>
+  <div class="result-box">
+    <h3>Level 2 Completed</h3>
+    <p>
+      Your Score:
+      <strong><?= esc($score) ?>/5</strong>
+    </p>
+    <a
+      href="<?= site_url('game/ending') ?>"
+      class="btn btn-next"
+    >
+      View Final Results
+    </a>
+  </div>
 </body>
 </html>
