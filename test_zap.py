@@ -2,7 +2,7 @@ from zapv2 import ZAPv2
 import time
 
 api_key = '92j7sfl7otefrl2b6ralqd9dl4'
-target = 'http://testphp.vulnweb.com'  # Ganti targetmu
+target = 'http://127.0.0.1:8500/'  # Ganti targetmu
 
 # Koneksikan ke ZAP
 zap = ZAPv2(apikey=api_key, proxies={'http': 'http://127.0.0.1:8481', 'https': 'http://127.0.0.1:8481'})
