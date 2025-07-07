@@ -2,8 +2,6 @@ pipeline {
     agent any
 
     environment {
-        CI_ENV = "testing"
-        PHP_VERSION = "8.1"
         SONAR_TOKEN = credentials('SONAR_TOKEN')
     }
 
@@ -39,15 +37,7 @@ pipeline {
             }
         }
 
-        stage('Start ZAP') {
-            steps {
-                bat '''
-                    start "" "C:\\Program Files\\OWASP\\Zed Attack Proxy\\zap.bat" -daemon -port 8481 -config api.key=92j7sfl7otefrl2b6ralqd9dl4
-                    timeout /t 30
-                '''
-            }
-        }
-
+        // TIDAK ADA Start ZAP daemon
         stage('Dynamic Analysis (DAST - ZAP)') {
             steps {
                 bat 'python test_zap.py'
@@ -66,7 +56,7 @@ pipeline {
             echo '✅ Pipeline berhasil'
         }
         failure {
-            echo '❌ Pipeline gagal (notifikasi email dinonaktifkan sementara)'
+            echo '❌ Pipeline gagal'
         }
     }
 }
