@@ -1,0 +1,6 @@
+projectKey=codeigniter_project
+serverUrl=http://localhost:9000
+serverVersion=25.6.0.109173
+dashboardUrl=http://localhost:9000/dashboard?id=codeigniter_project
+ceTaskId=d3d1d699-2c2f-42d5-a996-62df654df673
+ceTaskUrl=http://localhost:9000/api/ce/task?id=d3d1d699-2c2f-42d5-a996-62df654df673

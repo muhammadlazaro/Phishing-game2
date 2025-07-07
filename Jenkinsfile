@@ -39,9 +39,18 @@ pipeline {
             }
         }
 
+        stage('Start ZAP') {
+            steps {
+                bat '''
+                    start "" "C:\\Program Files\\OWASP\\Zed Attack Proxy\\zap.bat" -daemon -port 8481 -config api.key=92j7sfl7otefrl2b6ralqd9dl4
+                    timeout /t 30
+                '''
+            }
+        }
+
         stage('Dynamic Analysis (DAST - ZAP)') {
             steps {
-                bat 'zap-cli quick-scan --self-contained --start-options "-config api.disablekey=true" http://localhost:8081'
+                bat 'python test_zap.py'
             }
         }
 
